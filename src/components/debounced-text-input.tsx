@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { TextInput, StyleSheet } from 'react-native';
+import { TextInput, StyleSheet, TextInputProps } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
-interface SearchInputProps {
+type Props = Omit<
+  TextInputProps,
+  'onChangeText' | 'value' | 'style' | 'placeholderTextColor'
+> & {
   onSearch: (query: string) => void;
-  placeholder?: string;
   delay?: number;
-}
+};
 
 const DEBOUNCE_LATENCY = 500;
 
 export function DebouncedTextInput({
   onSearch,
-  placeholder,
   delay = DEBOUNCE_LATENCY,
-}: SearchInputProps) {
+  ...props
+}: Props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearchTerm] = useDebounce(searchTerm, delay);
 
@@ -27,8 +29,8 @@ export function DebouncedTextInput({
       style={styles.input}
       value={searchTerm}
       onChangeText={setSearchTerm}
-      placeholder={placeholder}
       placeholderTextColor="#666"
+      {...props}
     />
   );
 }
