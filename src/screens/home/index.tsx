@@ -1,6 +1,6 @@
 import { useTrackSearch } from '@/api/search';
 import { Track } from '@/api/types';
-import { DebouncedTextInput } from '@/components/debounced-text-input';
+import { DebouncedTextInput } from '@/components/ui/debounced-text-input';
 import React from 'react';
 import { useState } from 'react';
 import { FlatList, Image, SafeAreaView, Text, View } from 'react-native';
