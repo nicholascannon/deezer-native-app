@@ -1,6 +1,7 @@
 import { useTrackSearch } from '@/api/search';
 import { Track } from '@/api/types';
 import { DebouncedTextInput } from '@/components/debounced-text-input';
+import React from 'react';
 import { useState } from 'react';
 import { FlatList, Image, SafeAreaView, Text, View } from 'react-native';
 
@@ -13,7 +14,7 @@ export function Home() {
       style={{
         flex: 1,
         flexDirection: 'column',
-        gap: 32,
+        gap: 16,
         margin: 16,
       }}
     >
@@ -27,7 +28,14 @@ export function Home() {
 
       <View style={{ flex: 1 }}>
         {isLoading && <Text>Loading...</Text>}
-        {data && data?.data?.length && <TrackList tracks={data.data} />}
+        {data && data?.data?.length && (
+          <View style={{ flexDirection: 'column', gap: 8 }}>
+            <Text style={{ color: 'grey' }}>
+              Showing {data.data.length} of {data.total}
+            </Text>
+            <TrackList tracks={data.data} />
+          </View>
+        )}
         {!isLoading && !data?.data?.length && <Text>No tracks</Text>}
       </View>
     </SafeAreaView>

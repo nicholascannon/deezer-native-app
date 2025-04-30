@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Track } from './types';
 
 export function useTrackSearch(query: string) {
-  return useQuery<{ data?: Track[] }>({
+  return useQuery<TrackSearchResponse>({
     queryKey: ['track-search', query],
     queryFn: () =>
       fetch(
@@ -10,4 +10,10 @@ export function useTrackSearch(query: string) {
       ).then((res) => res.json()),
     enabled: query !== '',
   });
+}
+
+interface TrackSearchResponse {
+  data?: Track[];
+  next?: string;
+  total: number;
 }
