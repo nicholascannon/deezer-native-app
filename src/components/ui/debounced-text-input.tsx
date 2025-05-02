@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { TextInput, StyleSheet, TextInputProps } from 'react-native';
+import React, { ElementType, useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
+import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
+import { CloseCircleIcon } from '@/components/ui/icon';
 
-type Props = Omit<
-  TextInputProps,
-  'onChangeText' | 'value' | 'style' | 'placeholderTextColor'
-> & {
+type Props = {
   onSearch: (query: string) => void;
+  icon?: ElementType<any, any>;
+  placeholder?: string;
   delay?: number;
 };
 
@@ -14,8 +14,9 @@ const DEBOUNCE_LATENCY = 500;
 
 export function DebouncedTextInput({
   onSearch,
+  placeholder,
+  icon,
   delay = DEBOUNCE_LATENCY,
-  ...props
 }: Props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearchTerm] = useDebounce(searchTerm, delay);
@@ -25,23 +26,24 @@ export function DebouncedTextInput({
   }, [debouncedSearchTerm, onSearch]);
 
   return (
-    <TextInput
-      style={styles.input}
-      value={searchTerm}
-      onChangeText={setSearchTerm}
-      placeholderTextColor="#666"
-      {...props}
-    />
+    <Input variant="outline" size="md">
+      {icon && (
+        <InputSlot className="pl-3">
+          <InputIcon as={icon} />
+        </InputSlot>
+      )}
+
+      <InputField
+        value={searchTerm}
+        onChangeText={setSearchTerm}
+        placeholder={placeholder}
+      />
+
+      {debouncedSearchTerm !== '' && (
+        <InputSlot className="pr-3" onPress={() => setSearchTerm('')}>
+          <InputIcon as={CloseCircleIcon} />
+        </InputSlot>
+      )}
+    </Input>
   );
 }
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    fontSize: 16,
-  },
-});

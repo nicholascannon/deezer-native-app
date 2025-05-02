@@ -4,6 +4,7 @@ import { DebouncedTextInput } from '@/components/ui/debounced-text-input';
 import React from 'react';
 import { useState } from 'react';
 import { FlatList, Image, SafeAreaView, Text, View } from 'react-native';
+import { SearchIcon } from '@/components/ui/icon';
 
 export function Home() {
   const [track, setTrack] = useState('');
@@ -12,6 +13,7 @@ export function Home() {
   return (
     <SafeAreaView className="flex-col flex-1 gap-4 m-4 mt-8">
       <DebouncedTextInput
+        icon={SearchIcon}
         onSearch={(query) => setTrack(query)}
         placeholder="Search for a track, artist, album..."
       />
