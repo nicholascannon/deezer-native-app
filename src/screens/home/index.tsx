@@ -1,6 +1,5 @@
 import { useTrackSearch } from '@/api/search';
 import { Track } from '@/api/types';
-import { Box } from '@/components/ui/box';
 import { DebouncedTextInput } from '@/components/ui/debounced-text-input';
 import React from 'react';
 import { useState } from 'react';
@@ -17,18 +16,18 @@ export function Home() {
         placeholder="Search for a track, artist, album..."
       />
 
-      <Box className="flex-1">
+      <View className="flex-1">
         {isLoading && <Text>Loading...</Text>}
         {data && data?.data?.length && (
-          <Box className="flex-col gap-4">
+          <View className="flex-col gap-4">
             <Text className="text-gray-600">
               Showing {data.data.length} of {data.total}
             </Text>
             <TrackList tracks={data.data} />
-          </Box>
+          </View>
         )}
         {!isLoading && !data?.data?.length && <Text>No tracks</Text>}
-      </Box>
+      </View>
     </SafeAreaView>
   );
 }
@@ -38,10 +37,7 @@ function TrackList({ tracks }: { tracks: Track[] }) {
     <FlatList
       data={tracks}
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{
-        gap: 16,
-        width: '100%',
-      }}
+      contentContainerClassName="gap-4 w-full"
       renderItem={({ item }) => (
         <View className="gap-4 flex-row items-center">
           <Image src={item.album.cover_medium} className="h-[100] w-[100]" />
