@@ -5,6 +5,7 @@ import React from 'react';
 import { useState } from 'react';
 import { FlatList, Image, SafeAreaView, Text, View } from 'react-native';
 import { SearchIcon } from '@/components/ui/icon';
+import { Spinner } from '@/components/ui/spinner';
 
 export function Home() {
   const [track, setTrack] = useState('');
@@ -18,8 +19,9 @@ export function Home() {
         placeholder="Search for a track, artist, album..."
       />
 
-      <View className="flex-1">
-        {isLoading && <Text>Loading...</Text>}
+      <View className="flex-1 w-full">
+        {isLoading && <Spinner size="small" className="color-gray-500" />}
+
         {data && data?.data?.length && (
           <View className="flex-col gap-4">
             <Text className="text-gray-600">
@@ -28,7 +30,10 @@ export function Home() {
             <TrackList tracks={data.data} />
           </View>
         )}
-        {!isLoading && !data?.data?.length && <Text>No tracks</Text>}
+
+        {!isLoading && !data?.data?.length && (
+          <Text className="text-center">No tracks</Text>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -39,7 +44,7 @@ function TrackList({ tracks }: { tracks: Track[] }) {
     <FlatList
       data={tracks}
       showsVerticalScrollIndicator={false}
-      contentContainerClassName="gap-4 w-full"
+      contentContainerClassName="gap-4"
       renderItem={({ item }) => (
         <View className="gap-4 flex-row items-center">
           <Image src={item.album.cover_medium} className="h-[100] w-[100]" />
