@@ -7,10 +7,17 @@ import { StatusBar } from 'react-native';
 
 export default function RootLayout() {
   return (
-    <GluestackUIProvider mode="light">
+    <GluestackUIProvider mode="dark">
       <QueryClientProvider client={queryClient}>
-        <StatusBar barStyle="dark-content" />
-        <Stack screenOptions={{ headerShown: false }} />
+        <StatusBar barStyle="light-content" />
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: {
+              backgroundColor: '#000000',
+            },
+          }}
+        />
       </QueryClientProvider>
     </GluestackUIProvider>
   );

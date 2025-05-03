@@ -3,9 +3,10 @@ import { Track } from '@/api/types';
 import { DebouncedTextInput } from '@/components/ui/debounced-text-input';
 import React from 'react';
 import { useState } from 'react';
-import { FlatList, Image, SafeAreaView, Text, View } from 'react-native';
+import { FlatList, Image, SafeAreaView, View } from 'react-native';
 import { SearchIcon } from '@/components/ui/icon';
 import { Spinner } from '@/components/ui/spinner';
+import { Text } from '@/components/ui/text';
 
 export function Home() {
   const [track, setTrack] = useState('');
@@ -24,7 +25,7 @@ export function Home() {
 
         {data && data?.data?.length && (
           <View className="flex-col gap-4">
-            <Text className="text-gray-600">
+            <Text>
               Showing {data.data.length} of {data.total}
             </Text>
             <TrackList tracks={data.data} />
