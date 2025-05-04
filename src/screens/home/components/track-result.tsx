@@ -1,7 +1,8 @@
 import React from 'react';
+import { Image, Pressable, View } from 'react-native';
 import { Track } from '@/api/types';
-import { Image, View } from 'react-native';
 import { Text } from '@/components/ui/text';
+import { Icon, PlayIcon } from '@/components/ui/icon';
 
 export function TrackResult({ track }: { track: Track }) {
   return (
@@ -11,6 +12,10 @@ export function TrackResult({ track }: { track: Track }) {
       <Text className="flex-shrink">
         {track.artist.name} - {track.title}
       </Text>
+
+      <Pressable onPress={() => {}}>
+        <Icon as={PlayIcon} />
+      </Pressable>
     </View>
   );
 }
