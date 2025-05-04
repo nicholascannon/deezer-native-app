@@ -10,7 +10,7 @@ type Props = {
   delay?: number;
 };
 
-const DEBOUNCE_LATENCY = 500;
+const DEBOUNCE_LATENCY = 250;
 
 export function DebouncedTextInput({
   onSearch,
