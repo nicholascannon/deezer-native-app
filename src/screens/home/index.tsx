@@ -3,10 +3,11 @@ import { Track } from '@/api/types';
 import { DebouncedTextInput } from '@/components/ui/debounced-text-input';
 import React from 'react';
 import { useState } from 'react';
-import { FlatList, Image, SafeAreaView, View } from 'react-native';
+import { FlatList, SafeAreaView, View } from 'react-native';
 import { SearchIcon } from '@/components/ui/icon';
 import { Spinner } from '@/components/ui/spinner';
 import { Text } from '@/components/ui/text';
+import { TrackResult } from './components/track-result';
 
 export function Home() {
   const [track, setTrack] = useState('');
@@ -46,15 +47,7 @@ function TrackList({ tracks }: { tracks: Track[] }) {
       data={tracks}
       showsVerticalScrollIndicator={false}
       contentContainerClassName="gap-4"
-      renderItem={({ item }) => (
-        <View className="gap-4 flex-row items-center">
-          <Image src={item.album.cover_medium} className="h-[100] w-[100]" />
-
-          <Text className="flex-shrink">
-            {item.artist.name} - {item.title}
-          </Text>
-        </View>
-      )}
+      renderItem={({ item }) => <TrackResult track={item} />}
     />
   );
 }
