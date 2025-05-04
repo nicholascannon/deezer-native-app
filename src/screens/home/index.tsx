@@ -13,7 +13,7 @@ export function Home() {
   const { data, isLoading } = useTrackSearch(track);
 
   return (
-    <SafeAreaView className="flex-col flex-1 gap-4 m-4 mt-8">
+    <SafeAreaView className="flex-col flex-1 gap-4 m-4 mt-10">
       <DebouncedTextInput
         icon={SearchIcon}
         onSearch={(query) => setTrack(query)}

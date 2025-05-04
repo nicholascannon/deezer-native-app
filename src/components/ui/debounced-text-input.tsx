@@ -26,7 +26,7 @@ export function DebouncedTextInput({
   }, [debouncedSearchTerm, onSearch]);
 
   return (
-    <Input variant="outline" size="md">
+    <Input variant="outline" size="xl">
       {icon && (
         <InputSlot className="pl-3">
           <InputIcon as={icon} />
@@ -39,7 +39,7 @@ export function DebouncedTextInput({
         placeholder={placeholder}
       />
 
-      {debouncedSearchTerm !== '' && (
+      {searchTerm !== '' && (
         <InputSlot className="pr-3" onPress={() => setSearchTerm('')}>
           <InputIcon as={CloseCircleIcon} />
         </InputSlot>
