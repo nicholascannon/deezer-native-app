@@ -8,6 +8,7 @@ type Props = {
   icon?: ElementType<any, any>;
   placeholder?: string;
   delay?: number;
+  autoCorrect?: boolean;
 };
 
 const DEBOUNCE_LATENCY = 250;
@@ -17,6 +18,7 @@ export function DebouncedTextInput({
   placeholder,
   icon,
   delay = DEBOUNCE_LATENCY,
+  autoCorrect,
 }: Props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearchTerm] = useDebounce(searchTerm, delay);
@@ -37,6 +39,7 @@ export function DebouncedTextInput({
         value={searchTerm}
         onChangeText={setSearchTerm}
         placeholder={placeholder}
+        autoCorrect={autoCorrect}
       />
 
       {searchTerm !== '' && (

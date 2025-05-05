@@ -19,6 +19,7 @@ export function Home() {
         icon={SearchIcon}
         onSearch={(query) => setTrack(query)}
         placeholder="Search for a track, artist, album..."
+        autoCorrect={false}
       />
 
       <View className="flex-1 w-full">
