@@ -1,5 +1,5 @@
 import { useTrackSearch } from '@/api/search';
-import { Track } from '@/api/types';
+import { TrackSearchResult } from '@/api/types';
 import { DebouncedTextInput } from '@/components/ui/debounced-text-input';
 import React from 'react';
 import { useState } from 'react';
@@ -41,7 +41,7 @@ export function Home() {
   );
 }
 
-function TrackList({ tracks }: { tracks: Track[] }) {
+function TrackList({ tracks }: { tracks: TrackSearchResult[] }) {
   return (
     <FlatList
       data={tracks}

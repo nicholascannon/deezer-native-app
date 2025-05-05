@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Track } from './types';
+import { TrackSearchResult } from './types';
 
 export function useTrackSearch(query: string) {
   return useQuery<TrackSearchResponse>({
@@ -13,7 +13,7 @@ export function useTrackSearch(query: string) {
 }
 
 interface TrackSearchResponse {
-  data?: Track[];
+  data?: TrackSearchResult[];
   next?: string;
   total: number;
 }
