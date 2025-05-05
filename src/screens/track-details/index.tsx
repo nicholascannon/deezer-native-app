@@ -1,7 +1,7 @@
 import { useTrackDetails } from '@/api/track-details';
 import { ScreenHeader } from '@/components/ui/screen-header';
 import { Text } from '@/components/ui/text';
-import { Image, View } from 'react-native';
+import { Dimensions, Image, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export function TrackDetails({ id }: { id: string }) {
@@ -12,6 +12,11 @@ export function TrackDetails({ id }: { id: string }) {
       <ScreenHeader />
 
       <View>
+        <Image
+          src={data?.album.cover_xl}
+          className="w-full aspect-square"
+          resizeMode="cover"
+        />
         <Image
           src={data?.artist.picture_xl}
           className="w-48 h-48 rounded-full"
