@@ -1,7 +1,7 @@
 import { useTrackDetails } from '@/api/track-details';
 import { ScreenHeader } from '@/components/ui/screen-header';
 import { Text } from '@/components/ui/text';
-import { Dimensions, Image, View } from 'react-native';
+import { Image, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export function TrackDetails({ id }: { id: string }) {

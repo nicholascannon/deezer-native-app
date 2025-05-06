@@ -1,5 +1,5 @@
 import { Pressable, View } from 'react-native';
-import { ChevronLeftIcon, Icon } from './icon';
+import { ChevronLeftIcon, Icon } from '../icon';
 import { useNavigation } from 'expo-router';
 
 export function ScreenHeader() {
