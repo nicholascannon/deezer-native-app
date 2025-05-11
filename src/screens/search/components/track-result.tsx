@@ -1,8 +1,8 @@
 import React from 'react';
 import { Image, View } from 'react-native';
 import { TrackSearchResult } from '@/api/types';
-import { Text } from '@/components/ui/text';
 import { Link } from 'expo-router';
+import { Heading } from '@/components/ui/heading';
 
 export function TrackResult({ track }: { track: TrackSearchResult }) {
   return (
@@ -10,9 +10,9 @@ export function TrackResult({ track }: { track: TrackSearchResult }) {
       <View className="gap-4 flex-row items-center">
         <Image src={track.album.cover_medium} className="h-[100] w-[100]" />
 
-        <Text className="flex-shrink">
+        <Heading className="flex-shrink">
           {track.artist.name} - {track.title}
-        </Text>
+        </Heading>
       </View>
     </Link>
   );
