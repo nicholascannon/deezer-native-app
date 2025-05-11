@@ -1,10 +1,5 @@
-import { Heading } from '@/components/ui/heading';
-import { SafeAreaView } from 'react-native';
+import { Charts } from '@/screens/charts';
 
 export default function Index() {
-  return (
-    <SafeAreaView>
-      <Heading>Index</Heading>
-    </SafeAreaView>
-  );
+  return <Charts />;
 }

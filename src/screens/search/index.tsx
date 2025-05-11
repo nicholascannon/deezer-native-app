@@ -3,18 +3,19 @@ import { TrackSearchResult } from '@/api/types';
 import { DebouncedTextInput } from '@/components/ui/debounced-text-input';
 import React from 'react';
 import { useState } from 'react';
-import { FlatList, SafeAreaView, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { SearchIcon } from '@/components/ui/icon';
 import { Spinner } from '@/components/ui/spinner';
 import { Text } from '@/components/ui/text';
 import { TrackResult } from './components/track-result';
+import { Screen } from '@/components/ui/screen';
 
 export function Search() {
   const [track, setTrack] = useState('');
   const { data, isLoading } = useTrackSearch(track);
 
   return (
-    <SafeAreaView className="flex-col flex-1 gap-4 m-4 mt-10">
+    <Screen className="flex-col gap-4">
       <DebouncedTextInput
         icon={SearchIcon}
         onSearch={(query) => setTrack(query)}
@@ -22,23 +23,21 @@ export function Search() {
         autoCorrect={false}
       />
 
-      <View className="flex-1 w-full">
-        {isLoading && <Spinner size="small" className="color-gray-500" />}
+      {isLoading && <Spinner size="small" className="color-gray-500" />}
 
-        {data && data?.data?.length && (
-          <View className="flex-col gap-4">
-            <Text>
-              Showing {data.data.length} of {data.total}
-            </Text>
-            <TrackList tracks={data.data} />
-          </View>
-        )}
+      {data && data?.data?.length && (
+        <View className="flex-col gap-4">
+          <Text>
+            Showing {data.data.length} of {data.total}
+          </Text>
+          <TrackList tracks={data.data} />
+        </View>
+      )}
 
-        {!isLoading && !data?.data?.length && (
-          <Text className="text-center">No tracks</Text>
-        )}
-      </View>
-    </SafeAreaView>
+      {!isLoading && !data?.data?.length && (
+        <Text className="text-center">No tracks</Text>
+      )}
+    </Screen>
   );
 }
 
@@ -47,7 +46,7 @@ function TrackList({ tracks }: { tracks: TrackSearchResult[] }) {
     <FlatList
       data={tracks}
       showsVerticalScrollIndicator={false}
-      contentContainerClassName="gap-4 pb-12"
+      contentContainerClassName="gap-4"
       renderItem={({ item }) => <TrackResult track={item} />}
     />
   );

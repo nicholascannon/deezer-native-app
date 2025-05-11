@@ -6,28 +6,29 @@ import {
 } from '@/components/ui/avatar';
 import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
+import { Screen } from '@/components/ui/screen';
 import { ScreenHeader } from '@/components/ui/screen-header';
 import { Spinner } from '@/components/ui/spinner';
 import { Text } from '@/components/ui/text';
 import { VStack } from '@/components/ui/vstack';
-import { Image, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React from 'react';
+import { Image } from 'react-native';
 
 export function TrackDetails({ id }: { id: string }) {
   const { data, isLoading } = useTrackDetails(id);
 
   if (isLoading || !data) {
     return (
-      <SafeAreaView className="m-4">
+      <Screen>
         <Spinner size="small" className="color-gray-500" />
-      </SafeAreaView>
+      </Screen>
     );
   }
 
   const { album, artist, title } = data;
 
   return (
-    <SafeAreaView className="m-4">
+    <Screen>
       <ScreenHeader />
 
       <VStack space="xl">
@@ -50,6 +51,6 @@ export function TrackDetails({ id }: { id: string }) {
           </HStack>
         </VStack>
       </VStack>
-    </SafeAreaView>
+    </Screen>
   );
 }

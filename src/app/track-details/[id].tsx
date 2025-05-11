@@ -1,3 +1,4 @@
+import { Screen } from '@/components/ui/screen';
 import { TrackDetails } from '@/screens/track-details';
 import { useLocalSearchParams } from 'expo-router';
 
