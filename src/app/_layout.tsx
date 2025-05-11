@@ -10,6 +10,7 @@ export default function RootLayout() {
     <GluestackUIProvider mode="dark">
       <QueryClientProvider client={queryClient}>
         <StatusBar barStyle="light-content" />
+
         <Stack
           screenOptions={{
             headerShown: false,

@@ -9,7 +9,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { Text } from '@/components/ui/text';
 import { TrackResult } from './components/track-result';
 
-export function Home() {
+export function Search() {
   const [track, setTrack] = useState('');
   const { data, isLoading } = useTrackSearch(track);
 
@@ -47,7 +47,7 @@ function TrackList({ tracks }: { tracks: TrackSearchResult[] }) {
     <FlatList
       data={tracks}
       showsVerticalScrollIndicator={false}
-      contentContainerClassName="gap-4"
+      contentContainerClassName="gap-4 pb-12"
       renderItem={({ item }) => <TrackResult track={item} />}
     />
   );
