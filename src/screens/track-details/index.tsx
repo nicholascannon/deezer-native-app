@@ -14,7 +14,7 @@ import { VStack } from '@/components/ui/vstack';
 import React from 'react';
 import { Image } from 'react-native';
 
-export function TrackDetails({ id }: { id: string }) {
+export function TrackDetailsScreen({ id }: { id: string }) {
   const { data, isLoading } = useTrackDetails(id);
 
   if (isLoading || !data) {

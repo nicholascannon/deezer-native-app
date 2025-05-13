@@ -1,9 +1,8 @@
-import { Screen } from '@/components/ui/screen';
-import { TrackDetails } from '@/screens/track-details';
+import { TrackDetailsScreen } from '@/screens/track-details';
 import { useLocalSearchParams } from 'expo-router';
 
-export default function TrackDetailsScreen() {
+export default function TrackDetails() {
   const { id } = useLocalSearchParams<{ id: string }>();
 
-  return <TrackDetails id={id} />;
+  return <TrackDetailsScreen id={id} />;
 }

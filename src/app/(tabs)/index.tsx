@@ -1,5 +1,5 @@
-import { Charts } from '@/screens/charts';
+import { ChartsScreen } from '@/screens/charts';
 
 export default function Index() {
-  return <Charts />;
+  return <ChartsScreen />;
 }

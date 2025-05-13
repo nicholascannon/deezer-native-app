@@ -10,7 +10,7 @@ import { Text } from '@/components/ui/text';
 import { TrackResult } from './components/track-result';
 import { Screen } from '@/components/ui/screen';
 
-export function Search() {
+export function SearchScreen() {
   const [track, setTrack] = useState('');
   const { data, isLoading } = useTrackSearch(track);
 

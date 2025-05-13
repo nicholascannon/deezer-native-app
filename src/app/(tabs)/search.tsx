@@ -1,6 +1,5 @@
-import { Screen } from '@/components/ui/screen';
-import { Search } from '@/screens/search';
+import { SearchScreen } from '@/screens/search';
 
-export default function SearchScreen() {
-  return <Search />;
+export default function Search() {
+  return <SearchScreen />;
 }
