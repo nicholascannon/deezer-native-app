@@ -4,7 +4,7 @@ import { TrackSearchResult } from '@/api/types';
 import { Link } from 'expo-router';
 import { Heading } from '@/components/ui/heading';
 
-export function TrackResult({ track }: { track: TrackSearchResult }) {
+export function Track({ track }: { track: TrackSearchResult }) {
   return (
     <Link href={`/track-details/${track.id}`}>
       <View className="gap-4 flex-row items-center">

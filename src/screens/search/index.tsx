@@ -7,7 +7,7 @@ import { FlatList, View } from 'react-native';
 import { SearchIcon } from '@/components/ui/icon';
 import { Spinner } from '@/components/ui/spinner';
 import { Text } from '@/components/ui/text';
-import { TrackResult } from './components/track-result';
+import { Track } from '@/components/track';
 import { Screen } from '@/components/ui/screen';
 
 export function SearchScreen() {
@@ -47,7 +47,7 @@ function TrackList({ tracks }: { tracks: TrackSearchResult[] }) {
       data={tracks}
       showsVerticalScrollIndicator={false}
       contentContainerClassName="gap-4"
-      renderItem={({ item }) => <TrackResult track={item} />}
+      renderItem={({ item }) => <Track track={item} />}
     />
   );
 }

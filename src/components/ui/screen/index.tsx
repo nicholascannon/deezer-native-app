@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native';
 import { tva } from '@gluestack-ui/nativewind-utils/tva';
 
 const style = tva({
-  base: 'm-2',
+  base: 'm-2 mt-12',
 });
 
 export function Screen({
