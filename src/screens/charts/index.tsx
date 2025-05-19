@@ -26,6 +26,7 @@ export function ChartsScreen() {
               <FlatList
                 data={data.tracks.data}
                 contentContainerClassName="gap-4"
+                showsVerticalScrollIndicator={false}
                 renderItem={({ item, index }) => (
                   <ChartListItem rank={index + 1}>
                     <Track track={item as any} />
@@ -37,6 +38,7 @@ export function ChartsScreen() {
               <FlatList
                 data={data.albums.data}
                 contentContainerClassName="gap-4"
+                showsVerticalScrollIndicator={false}
                 renderItem={({ item, index }) => (
                   <ChartListItem rank={index + 1}>
                     <Album album={item} />
