@@ -4,11 +4,11 @@ import { Track } from '@/components/track';
 import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
 import { Screen } from '@/components/ui/screen';
+import { ScreenFlatList } from '@/components/ui/screen-flat-list';
 import { Spinner } from '@/components/ui/spinner';
 import { TabbedLayout } from '@/components/ui/tabbed-layout';
-import { Text } from '@/components/ui/text';
 import { ReactNode } from 'react';
-import { FlatList, View } from 'react-native';
+import { View } from 'react-native';
 
 export function ChartsScreen() {
   const { data, isLoading } = useCharts();
@@ -23,7 +23,7 @@ export function ChartsScreen() {
         <TabbedLayout
           tabs={{
             Tracks: (
-              <FlatList
+              <ScreenFlatList
                 data={data.tracks.data}
                 contentContainerClassName="gap-4"
                 showsVerticalScrollIndicator={false}
@@ -35,7 +35,7 @@ export function ChartsScreen() {
               />
             ),
             Albums: (
-              <FlatList
+              <ScreenFlatList
                 data={data.albums.data}
                 contentContainerClassName="gap-4"
                 showsVerticalScrollIndicator={false}
