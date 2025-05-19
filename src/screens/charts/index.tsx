@@ -1,10 +1,13 @@
 import { useCharts } from '@/api/charts';
+import { Album } from '@/components/album';
 import { Track } from '@/components/track';
 import { Heading } from '@/components/ui/heading';
+import { HStack } from '@/components/ui/hstack';
 import { Screen } from '@/components/ui/screen';
 import { Spinner } from '@/components/ui/spinner';
 import { TabbedLayout } from '@/components/ui/tabbed-layout';
 import { Text } from '@/components/ui/text';
+import { ReactNode } from 'react';
 import { FlatList } from 'react-native';
 
 export function ChartsScreen() {
@@ -23,18 +26,42 @@ export function ChartsScreen() {
               <FlatList
                 data={data.tracks.data}
                 contentContainerClassName="gap-4"
-                renderItem={({ item }) => <Track track={item as any} />}
+                renderItem={({ item, index }) => (
+                  <ChartListItem rank={index + 1}>
+                    <Track track={item as any} />
+                  </ChartListItem>
+                )}
               />
             ),
             Albums: (
               <FlatList
                 data={data.albums.data}
-                renderItem={({ item }) => <Text>{item.title}</Text>}
+                contentContainerClassName="gap-4"
+                renderItem={({ item, index }) => (
+                  <ChartListItem rank={index + 1}>
+                    <Album album={item} />
+                  </ChartListItem>
+                )}
               />
             ),
           }}
         />
       )}
     </Screen>
+  );
+}
+
+function ChartListItem({
+  children,
+  rank,
+}: {
+  children: ReactNode;
+  rank: number;
+}) {
+  return (
+    <HStack space="lg">
+      <Heading size="4xl">{rank}</Heading>
+      {children}
+    </HStack>
   );
 }
