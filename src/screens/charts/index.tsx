@@ -8,7 +8,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { TabbedLayout } from '@/components/ui/tabbed-layout';
 import { Text } from '@/components/ui/text';
 import { ReactNode } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 export function ChartsScreen() {
   const { data, isLoading } = useCharts();
@@ -63,7 +63,7 @@ function ChartListItem({
   return (
     <HStack space="lg">
       <Heading size="4xl">{rank}</Heading>
-      {children}
+      <View className="flex-shrink">{children}</View>
     </HStack>
   );
 }
