@@ -1,10 +1,21 @@
 import { ReactNode } from 'react';
-import { SafeAreaView } from 'react-native';
+import { View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export function Screen({ children }: { children: ReactNode }) {
+  const insets = useSafeAreaInsets();
+
   return (
-    <SafeAreaView className="m-4 mt-24" style={{ flex: 1 }}>
+    <View
+      className="m-4 flex-1"
+      style={{
+        paddingTop: insets.top,
+        paddingBottom: insets.bottom,
+        paddingLeft: insets.left,
+        paddingRight: insets.right,
+      }}
+    >
       {children}
-    </SafeAreaView>
+    </View>
   );
 }
